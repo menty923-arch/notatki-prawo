@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Preambuła i samorząd – notatka</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: zeszyt w jednej kolumnie; rozdziały jako karty, kolor = kategoria informacji (zakreślacze), interakcje do samosprawdzania */
+:root{
+  --bg:#f2f4f8; --paper:#ffffff; --ink:#1b2230; --muted:#5b6578; --line:#dce1ea; --soft:#f6f8fb;
+  --art:#1d5fd0; --art-bg:#e3ecfc;
+  --key:#7a5a00; --key-bg:#fff0a0;
+  --ok:#17794a; --ok-bg:#dcf4e6;
+  --warn:#9a5b00; --warn-bg:#fdecd2;
+  --trap:#b8262d; --trap-bg:#fde3e3;
+  --tk:#6a3cc2; --tk-bg:#ece4fb;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11151d; --paper:#1a1f2a; --ink:#e7ebf2; --muted:#9aa4b6; --line:#2c3443; --soft:#151a23;
+  --art:#8db4ff; --art-bg:#1d2c4a; --key:#ffe27a; --key-bg:#4a3f12;
+  --ok:#6fd9a1; --ok-bg:#163829; --warn:#ffc061; --warn-bg:#41300f; --trap:#ff8a8f; --trap-bg:#47191c;
+  --tk:#c3a6ff; --tk-bg:#2e2350; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151d; --paper:#1a1f2a; --ink:#e7ebf2; --muted:#9aa4b6; --line:#2c3443; --soft:#151a23;
+  --art:#8db4ff; --art-bg:#1d2c4a; --key:#ffe27a; --key-bg:#4a3f12;
+  --ok:#6fd9a1; --ok-bg:#163829; --warn:#ffc061; --warn-bg:#41300f; --trap:#ff8a8f; --trap-bg:#47191c;
+  --tk:#c3a6ff; --tk-bg:#2e2350; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar-in{max-width:780px;margin:0 auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.bar-in::-webkit-scrollbar{display:none}
+.bar a{flex:none;font-family:var(--f-display);font-weight:500;font-size:.88rem;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--soft)}
+.bar a:hover{border-color:var(--art)}
+.prog{height:3px;background:var(--art);width:0;transition:width .1s linear}
+.wrap{max-width:780px;margin:0 auto;padding-block:26px 70px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:26px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6.5vw,3rem);font-weight:800;letter-spacing:-.025em}
+h2{font-size:1.6rem;font-weight:800;display:flex;gap:10px;align-items:baseline}
+h2 .n{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);font-weight:700}
+h3{font-size:1.14rem;font-weight:700;margin-top:4px}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lead{color:var(--muted);max-width:62ch}
+section{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px clamp(16px,4vw,30px);display:flex;flex-direction:column;gap:14px;scroll-margin-top:70px}
+.stack{display:flex;flex-direction:column;gap:10px}
+ul,ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+.a{font-family:var(--f-mono);font-size:.84em;font-weight:700;color:var(--art);background:var(--art-bg);padding:1px 6px;border-radius:5px;white-space:nowrap}
+.k{background:linear-gradient(transparent 40%,var(--key-bg) 40%);font-weight:600}
+.ok{color:var(--ok);font-weight:700}.trapw{color:var(--trap);font-weight:700}.tkw{color:var(--tk);font-weight:600}
+.box{border-radius:11px;padding:12px 15px;display:flex;flex-direction:column;gap:6px}
+.box .lbl{font-family:var(--f-mono);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
+.ok-b{background:var(--ok-bg)}.ok-b .lbl{color:var(--ok)}
+.trap-b{background:var(--trap-bg)}.trap-b .lbl{color:var(--trap)}
+.tk-b{background:var(--tk-bg)}.tk-b .lbl{color:var(--tk)}
+.art-b{background:var(--art-bg)}.art-b .lbl{color:var(--art)}
+.warn-b{background:var(--warn-bg)}.warn-b .lbl{color:var(--warn)}
+.plain{background:var(--soft);border:1px solid var(--line)}.plain .lbl{color:var(--muted)}
+.quote{border-left:3px solid var(--art);padding:4px 0 4px 14px;font-style:italic}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+.legend div{display:flex;gap:10px;align-items:center;font-size:.94rem}
+.sw{width:30px;height:18px;border-radius:4px;flex:none}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.mat{border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;background:var(--soft);transition:transform .15s,border-color .15s}
+.mat:hover{transform:translateY(-2px);border-color:var(--art)}
+.mat b{font-family:var(--f-display)}
+.mat span{font-size:.92rem;color:var(--muted)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--art);outline-offset:2px}
+.btn{font-family:var(--f-display);font-weight:700;font-size:.93rem;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 15px;cursor:pointer;transition:transform .12s,background .15s,border-color .15s}
+.btn:hover{border-color:var(--art)}.btn:active{transform:scale(.96)}
+.btn.on{background:var(--art);border-color:var(--art);color:var(--paper)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* tryb sprawdzania */
+.switch{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:var(--tk-bg);cursor:pointer;user-select:none}
+.switch input{width:20px;height:20px;accent-color:var(--tk)}
+.ans{display:grid;grid-template-rows:1fr;transition:grid-template-rows .35s ease}
+.ans>div{overflow:hidden;min-height:0}
+.quiz-mode .ans{grid-template-rows:0fr}
+.quiz-mode .ans.open{grid-template-rows:1fr}
+.reveal{display:none}
+.quiz-mode .reveal{display:inline-flex}
+/* kazus */
+.q{border-top:1px dashed var(--line);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.qh{font-family:var(--f-display);font-weight:700;font-size:1.1rem}
+.qh span{font-family:var(--f-mono);color:var(--muted);margin-right:6px}
+/* drabina */
+.ladder{display:flex;flex-direction:column;gap:6px}
+.rung{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--soft);transition:background .3s,border-color .3s,transform .3s}
+.rung b{font-family:var(--f-display)}
+.rung small{font-family:var(--f-mono);color:var(--muted);font-size:.72rem}
+.rung.hit{background:var(--ok-bg);border-color:var(--ok);transform:translateX(6px)}
+.rung.hit small{color:var(--ok)}
+/* przełącznik domniemania */
+.flow{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:12px;background:var(--soft);border:1px solid var(--line)}
+.flow .step{display:flex;gap:10px;align-items:center}
+.flow .pill{font-family:var(--f-display);font-weight:700;padding:6px 12px;border-radius:999px;font-size:.92rem}
+.flow .arrow{font-family:var(--f-mono);color:var(--muted)}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:.25;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* kto do TK */
+.who{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.who button{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:10px 12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:transform .12s,background .25s,border-color .25s}
+.who button:active{transform:scale(.97)}
+.who b{font-family:var(--f-display);font-size:.95rem;line-height:1.25}
+.who .res{font-family:var(--f-mono);font-size:.72rem;font-weight:700;letter-spacing:.04em;color:var(--muted)}
+.who button.g{background:var(--ok-bg);border-color:var(--ok)}.who button.g .res{color:var(--ok)}
+.who button.s{background:var(--warn-bg);border-color:var(--warn)}.who button.s .res{color:var(--warn)}
+.who button.x{background:var(--trap-bg);border-color:var(--trap)}.who button.x .res{color:var(--trap)}
+.whyline{min-height:2.6em;font-size:.95rem}
+/* rozporządzenie */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:7px 11px;cursor:pointer;font-family:var(--f-display);font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:7px;transition:transform .12s,border-color .15s}
+.chip:active{transform:scale(.96)}
+.chip.on{border-color:var(--art);background:var(--art-bg);color:var(--art)}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.d-ok{background:var(--ok)}.d-warn{background:var(--warn)}.d-trap{background:var(--trap)}
+.panel{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--soft)}
+.panel h3{margin:0}
+.sev{align-self:flex-start;font-family:var(--f-mono);font-size:.72rem;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:999px}
+.sev.ok{background:var(--ok-bg);color:var(--ok)}.sev.warn{background:var(--warn-bg);color:var(--warn)}.sev.trap{background:var(--trap-bg);color:var(--trap)}
+/* test 31 ust 3 */
+.test{display:flex;flex-direction:column;gap:8px}
+.tq{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:var(--soft)}
+.tq.done-ok{border-color:var(--ok)}.tq.done-bad{border-color:var(--trap);background:var(--trap-bg)}
+.tq .fb{font-size:.94rem}
+/* oś czasu */
+.tl{display:flex;flex-direction:column;gap:0;padding-left:6px}
+.tli{display:grid;grid-template-columns:70px 1fr;gap:12px;padding-bottom:14px;position:relative}
+.tli::before{content:"";position:absolute;left:64px;top:8px;bottom:-4px;width:2px;background:var(--line)}
+.tli:last-child::before{display:none}
+.tli .y{font-family:var(--f-mono);font-weight:700;color:var(--art)}
+.tli .c{position:relative}
+.tli .c::before{content:"";position:absolute;left:-12px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--art);transform:translateX(-50%)}
+/* zakładki */
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+/* plan */
+.plan{list-style:none;padding:0;gap:8px}
+.plan li{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;transition:background .25s}
+.plan input{width:20px;height:20px;margin-top:3px;accent-color:var(--ok);flex:none}
+.plan label{display:flex;flex-direction:column;gap:2px;cursor:pointer;min-width:0}
+.plan .d{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.plan li.done{background:var(--ok-bg);border-color:transparent}
+.plan li.done strong{text-decoration:line-through}
+.meter{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--ok);width:0;transition:width .4s ease}
+.schema{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.schema div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.92rem;background:var(--soft)}
+.schema b{display:block;font-family:var(--f-display)}
+/* quiz */
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{border:1px solid var(--line);background:var(--soft);border-radius:10px;padding:10px 14px;text-align:left;cursor:pointer;transition:background .2s,border-color .2s,transform .12s}
+.opt:hover{border-color:var(--art)}
+.opt.right{background:var(--ok-bg);border-color:var(--ok)}
+.opt.wrong{background:var(--trap-bg);border-color:var(--trap);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.score{font-family:var(--f-mono);color:var(--muted);font-size:.85rem}
+/* fiszki */
+.flip{perspective:1200px;cursor:pointer;border:0;background:none;padding:0;width:100%;text-align:left}
+.flip-in{position:relative;min-height:180px;transition:transform .5s;transform-style:preserve-3d}
+.flip.back .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:10px;border:1px solid var(--line);background:var(--soft)}
+.face.b{transform:rotateY(180deg);background:var(--ok-bg);border-color:transparent}
+.face .side{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.face .txt{font-size:1.08rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="bar"><div class="bar-in">
+  <a href="#mapa">Materiały</a><a href="#plan">Plan</a><a href="#preambula">Preambuła</a><a href="#kazus">Kazus</a><a href="#tk">Kto do TK</a><a href="#rozp">Rozporządzenie</a><a href="#art1">Art. 1</a><a href="#bazy">Lex/Legalis</a><a href="#sprawdzian">Sprawdzian</a>
+</div><div class="prog" id="prog"></div></div>
+
+<div class="wrap">
+<header class="stack">
+  <p class="eyebrow">Prawo konstytucyjne · I rok · interaktywna notatka</p>
+  <h1>Preambuła, samorząd i dobro wspólne</h1>
+  <p class="lead">Wszystko z twoich załączników, wyjaśnione od zera. Klikaj w elementy oznaczone jako interaktywne, a na końcu zrób sprawdzian.</p>
+  <div class="legend">
+    <div><span class="sw" style="background:var(--art-bg);border:2px solid var(--art)"></span><span><span class="a">art. 191</span> przepis w Konstytucji</span></div>
+    <div><span class="sw" style="background:var(--key-bg)"></span><span><span class="k">pojęcie</span> do zapamiętania</span></div>
+    <div><span class="sw" style="background:var(--ok-bg);border:2px solid var(--ok)"></span><span><span class="ok">odpowiedź / wniosek</span></span></div>
+    <div><span class="sw" style="background:var(--trap-bg);border:2px solid var(--trap)"></span><span><span class="trapw">pułapka</span> na egzaminie</span></div>
+    <div><span class="sw" style="background:var(--tk-bg);border:2px solid var(--tk)"></span><span><span class="tkw">TK i doktryna</span></span></div>
+    <div><span class="sw" style="background:var(--warn-bg);border:2px solid var(--warn)"></span><span>wątpliwe / do dyskusji</span></div>
+  </div>
+</header>
+
+<section id="mapa">
+  <h2><span class="n">00</span>Co dostałeś i po co</h2>
+  <p>Cztery załączniki składają się na jeden temat: <span class="k">jak Konstytucja chroni podział władzy między państwo a samorząd i jakie akty prawne mogą ograniczać nasze wolności</span>.</p>
+  <div class="grid2">
+    <a class="mat" href="#kazus"><b>Preambuła kazus.docx</b><span>Zadanie do rozwiązania: ustawa centralizuje władzę, gminy idą do TK. 5 pytań.</span></a>
+    <a class="mat" href="#rozp"><b>Rozporządzenie RM z 31.03.2020</b><span>Lockdown covidowy. Ćwiczenie: oceń, czy był zgodny z Konstytucją.</span></a>
+    <a class="mat" href="#art1"><b>Komentarz M. Chmaja do art. 1</b><span>Doktryna: co znaczy, że państwo jest „dobrem wspólnym”.</span></a>
+    <a class="mat" href="#bazy"><b>Lex.docx i Legalis.docx</b><span>Jak wejść do baz prawniczych, z których pochodzi komentarz.</span></a>
+  </div>
+</section>
+
+<section id="plan">
+  <h2><span class="n">01</span>Plan nauki</h2>
+  <p>6 dni po ok. 40 minut. Odhaczaj, postęp zapamięta się w twojej przeglądarce.</p>
+  <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+  <ul class="plan" id="planList">
+    <li><input type="checkbox" id="p1"><label for="p1"><span class="d">Dzień 1</span><strong>Preambuła i artykuły</strong><span>Przeczytaj sekcję „Preambuła” i zakreśl w Konstytucji artykuły z tabeli.</span></label></li>
+    <li><input type="checkbox" id="p2"><label for="p2"><span class="d">Dzień 2</span><strong>Kazus: pytania 1–2</strong><span>Pobaw się drabiną pomocniczości i przełącznikiem domniemania.</span></label></li>
+    <li><input type="checkbox" id="p3"><label for="p3"><span class="d">Dzień 3</span><strong>Kazus: pytania 3–5 + „Kto do TK”</strong><span>Klikaj wszystkie organy, aż będziesz zgadywać bezbłędnie.</span></label></li>
+    <li><input type="checkbox" id="p4"><label for="p4"><span class="d">Dzień 4</span><strong>Rozporządzenie</strong><span>Przejdź rozdziały i zrób test z art. 31 ust. 3.</span></label></li>
+    <li><input type="checkbox" id="p5"><label for="p5"><span class="d">Dzień 5</span><strong>Komentarz do art. 1</strong><span>Oś czasu, trzy elementy państwa, granice dobra wspólnego.</span></label></li>
+    <li><input type="checkbox" id="p6"><label for="p6"><span class="d">Dzień 6</span><strong>Sprawdzian</strong><span>Włącz „tryb sprawdzania” w kazusie, zrób quiz i fiszki.</span></label></li>
+  </ul>
+  <h3>Schemat odpowiedzi w każdym kazusie</h3>
+  <div class="schema">
+    <div><b>1. Przepis</b>Jaki artykuł?</div>
+    <div><b>2. Treść</b>Co mówi, swoimi słowami.</div>
+    <div><b>3. Zastosowanie</b>Jak pasuje do stanu faktycznego.</div>
+    <div><b>4. Wniosek</b>Tak / nie i dlaczego.</div>
+  </div>
+</section>
+
+<section id="preambula">
+  <h2><span class="n">02</span>Najpierw podstawy: preambuła</h2>
+  <p><span class="k">Preambuła (Wstęp)</span> to uroczysty tekst przed art. 1. Nie jest podzielona na artykuły. Mówi, <b>kto</b> uchwala Konstytucję (Naród), <b>dlaczego</b> i <b>na jakich wartościach</b> ma się ona opierać.</p>
+  <h3>Co w niej jest, w skrócie</h3>
+  <ul>
+    <li><b>Kto:</b> Naród Polski, czyli wszyscy obywatele, zarówno wierzący w Boga, jak i niepodzielający tej wiary. To kompromis światopoglądowy.</li>
+    <li><b>Odwołania do historii:</b> tysiącletnie dziedzictwo, odzyskanie suwerenności w 1989 r., pamięć o ofiarach totalitaryzmów.</li>
+    <li><b>Fundamenty państwa:</b> poszanowanie wolności i sprawiedliwości, <span class="k">współdziałanie władz</span>, <span class="k">dialog społeczny</span>, <span class="k">zasada pomocniczości</span>.</li>
+    <li><b>Cele:</b> zagwarantować prawa obywatelskie, zapewnić instytucjom publicznym <span class="k">rzetelność i sprawność</span>.</li>
+  </ul>
+  <p class="quote">„…ustanawiamy Konstytucję Rzeczypospolitej Polskiej jako prawa podstawowe dla państwa oparte na poszanowaniu wolności i sprawiedliwości, współdziałaniu władz, dialogu społecznym oraz na zasadzie pomocniczości umacniającej uprawnienia obywateli i ich wspólnot.”</p>
+  <p class="quote">„…pragnąc na zawsze zagwarantować prawa obywatelskie, a działaniu instytucji publicznych zapewnić rzetelność i sprawność…”</p>
+  <div class="box tk-b"><span class="lbl">Czy preambuła to „prawdziwe prawo”?</span>
+    <p>Tak, jest częścią Konstytucji i ma znaczenie prawne. TK używa jej przede wszystkim <b>do wykładni</b>, czyli tłumaczenia innych przepisów. Rzadko jest <b>samodzielnym wzorcem kontroli</b>. Dlatego w kazusie zawsze łącz preambułę z konkretnym artykułem.</p></div>
+  <h3>Artykuły do zakreślenia</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Przepis</th><th>O czym jest</th><th>Gdzie</th></tr></thead>
+    <tbody>
+      <tr><td><span class="a">Preambuła</span></td><td>pomocniczość, sprawność instytucji</td><td>Kazus 1, 5</td></tr>
+      <tr><td><span class="a">art. 1</span></td><td>RP dobrem wspólnym obywateli</td><td>Komentarz</td></tr>
+      <tr><td><span class="a">art. 2</span></td><td>demokratyczne państwo prawne</td><td>Kazus 5, rozp.</td></tr>
+      <tr><td><span class="a">art. 15</span></td><td>decentralizacja władzy publicznej</td><td>Kazus 1, 2</td></tr>
+      <tr><td><span class="a">art. 16</span></td><td>wspólnota samorządowa, istotna część zadań publicznych</td><td>Kazus 1, 2</td></tr>
+      <tr><td><span class="a">art. 31 ust. 3</span></td><td>kiedy wolno ograniczyć wolność</td><td>Rozp.</td></tr>
+      <tr><td><span class="a">art. 52</span></td><td>wolność poruszania się (ust. 3: ograniczenia tylko w ustawie)</td><td>Rozp.</td></tr>
+      <tr><td><span class="a">art. 57</span></td><td>wolność zgromadzeń</td><td>Rozp.</td></tr>
+      <tr><td><span class="a">art. 87, 92</span></td><td>źródła prawa, warunki wydania rozporządzenia</td><td>Rozp.</td></tr>
+      <tr><td><span class="a">art. 163, 164</span></td><td>domniemanie właściwości samorządu i gminy</td><td>Kazus 2</td></tr>
+      <tr><td><span class="a">art. 191</span></td><td>kto może złożyć wniosek do TK</td><td>Kazus 3, 4</td></tr>
+      <tr><td><span class="a">art. 228, 232</span></td><td>stany nadzwyczajne, klęska żywiołowa</td><td>Rozp.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="kazus">
+  <h2><span class="n">03</span>Kazus „Preambuła”</h2>
+  <div class="box art-b"><span class="lbl">Stan faktyczny</span>
+    <p>Sejm uchwala ustawę, która <b>przenosi zadania samorządów na poziom centralny</b>. Dodatkowo samorząd może wykonywać tylko te zadania, których centrala nie jest w stanie wykonać ze względu na ich szczegółowy i techniczny charakter. <b>Prezydent miasta W.</b> składa wniosek do TK i zostaje odprawiony. Potem wniosek składa <b>Rada Miasta Z.</b>: ustawa narusza Wstęp do Konstytucji, pomocniczość i osłabia sprawność instytucji.</p></div>
+  <label class="switch" for="qm"><input type="checkbox" id="qm"><span><b>Tryb sprawdzania</b>: ukryj odpowiedzi i odsłaniaj je po kolei</span></label>
+
+  <div class="q">
+    <p class="qh"><span>P1</span>Jaka jest treść zasady pomocniczości i czy jest w Konstytucji?</p>
+    <button class="btn reveal" type="button">Pokaż odpowiedź</button>
+    <div class="ans"><div class="stack">
+      <p><span class="k">Pomocniczość (subsydiarność)</span> mówi: zadanie wykonuje szczebel <b>najbliższy człowiekowi</b>, który jest w stanie je dobrze wykonać. Wyższy szczebel wkracza dopiero wtedy, gdy niższy sobie nie radzi. Państwo jest „pomocnikiem”, a nie pierwszym wykonawcą.</p>
+      <div class="box plain"><span class="lbl">Interaktywne: drabina pomocniczości</span>
+        <p>Wybierz zadanie i zobacz, kto powinien się nim zająć.</p>
+        <div class="row" id="tasks"></div>
+        <div class="ladder" id="ladder"></div>
+      </div>
+      <div class="box ok-b"><span class="lbl">Odpowiedź</span><p>Tak. Wyrażona wprost w <span class="a">preambule</span>. W części artykułowej rozwijają ją <span class="a">art. 15</span> (decentralizacja), <span class="a">art. 16 ust. 2</span> (samorząd wykonuje istotną część zadań publicznych), <span class="a">art. 163</span> i <span class="a">art. 164 ust. 3</span>.</p></div>
+    </div></div>
+  </div>
+
+  <div class="q">
+    <p class="qh"><span>P2</span>Czy domniemanie właściwości na rzecz władz centralnych byłoby zgodne z Konstytucją?</p>
+    <button class="btn reveal" type="button">Pokaż odpowiedź</button>
+    <div class="ans"><div class="stack">
+      <p><span class="k">Domniemanie właściwości</span> to reguła na wypadek wątpliwości: jeśli przepis nie mówi, kto ma wykonać zadanie, to wykonuje je ten, na czyją rzecz jest domniemanie.</p>
+      <div class="box plain"><span class="lbl">Interaktywne: kto dostaje „niczyje” zadanie?</span>
+        <div class="row"><button class="btn on" type="button" data-flow="k">Według Konstytucji</button><button class="btn" type="button" data-flow="u">Według ustawy z kazusu</button></div>
+        <div class="flow" id="flow"></div>
+      </div>
+      <p><span class="a">art. 163</span>: samorząd wykonuje zadania publiczne <b>niezastrzeżone</b> przez Konstytucję lub ustawy dla innych organów. <span class="a">art. 164 ust. 3</span>: gmina wykonuje wszystkie zadania samorządu niezastrzeżone dla innych jednostek.</p>
+      <div class="box ok-b"><span class="lbl">Odpowiedź</span><p>Nie. Ustawa odwraca konstytucyjne domniemanie. Narusza <span class="a">art. 163</span>, <span class="a">art. 164 ust. 3</span>, <span class="a">art. 15 ust. 1</span>, <span class="a">art. 16 ust. 2</span> i zasadę pomocniczości z preambuły.</p></div>
+    </div></div>
+  </div>
+
+  <div class="q">
+    <p class="qh"><span>P3</span>Czy prezydent miasta miał legitymację do TK?</p>
+    <button class="btn reveal" type="button">Pokaż odpowiedź</button>
+    <div class="ans"><div class="stack">
+      <p><span class="k">Legitymacja</span> = uprawnienie do wszczęcia postępowania. Przed TK katalog jest <b>zamknięty</b>: tylko podmioty z <span class="a">art. 191 ust. 1</span>. Dla samorządu pkt 3 wymienia <span class="k">organy stanowiące</span> JST, czyli rady i sejmiki. Prezydent miasta jest organem <b>wykonawczym</b>.</p>
+      <div class="box trap-b"><span class="lbl">Pułapka</span><p>W art. 191 ust. 1 pkt 1 jest <b>Prezydent RP</b>. Prezydent miasta to zupełnie inny organ. Kazus specjalnie gra na podobnej nazwie.</p></div>
+      <div class="box ok-b"><span class="lbl">Odpowiedź</span><p>Nie miał. TK słusznie odmówił nadania biegu wnioskowi. Sprawdź się w sekcji „Kto może iść do TK”.</p></div>
+    </div></div>
+  </div>
+
+  <div class="q">
+    <p class="qh"><span>P4</span>Czy rada miasta miała legitymację?</p>
+    <button class="btn reveal" type="button">Pokaż odpowiedź</button>
+    <div class="ans"><div class="stack">
+      <p>Rada miasta to organ stanowiący gminy, więc mieści się w <span class="a">art. 191 ust. 1 pkt 3</span>. Ma jednak <span class="k">legitymację szczególną (ograniczoną)</span>: według <span class="a">art. 191 ust. 2</span> może kwestionować tylko akty dotyczące spraw objętych jej zakresem działania.</p>
+      <p>Ustawa zabierająca gminom zadania dotyczy ich bezpośrednio, więc warunek jest spełniony.</p>
+      <div class="box ok-b"><span class="lbl">Odpowiedź</span><p>Tak, legitymacja szczególna. Wniosek powinien jednak obok Wstępu wskazywać art. 15, 16, 163 i 164, bo sama preambuła jest słabym wzorcem kontroli.</p></div>
+    </div></div>
+  </div>
+
+  <div class="q">
+    <p class="qh"><span>P5</span>Czy osłabienie sprawności instytucji może prowadzić do niezgodności z Konstytucją?</p>
+    <button class="btn reveal" type="button">Pokaż odpowiedź</button>
+    <div class="ans"><div class="stack">
+      <p>Preambuła wymienia <span class="k">rzetelność i sprawność</span> instytucji jako cel Konstytucji, a TK traktuje sprawność jako wartość konstytucyjną. Komentarz Chmaja dodaje, że nieprzerwane funkcjonowanie organów państwa wynika też z <span class="a">art. 1</span>.</p>
+      <div class="box trap-b"><span class="lbl">Ale uwaga</span><p>TK bada <b>zgodność</b> z Konstytucją, a nie <b>celowość</b>. Nie ocenia, czy ustawa jest mądra czy skuteczna. To decyzja polityczna Sejmu.</p></div>
+      <div class="box ok-b"><span class="lbl">Odpowiedź</span><p>Co do zasady tak, ale tylko przy poważnym, wykazanym paraliżu instytucji, najlepiej w połączeniu z <span class="a">art. 2</span> i przepisami o samorządzie. Sam zarzut „ustawa jest nieefektywna” nie wystarczy.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<section id="tk">
+  <h2><span class="n">04</span>Kto może iść do TK?</h2>
+  <p>Kliknij organ i zgadnij w głowie, zanim zobaczysz wynik. <span class="ok">Zielony</span> = legitymacja ogólna (każdy akt), <span style="color:var(--warn);font-weight:700">pomarańczowy</span> = szczególna (tylko „swoje” sprawy, <span class="a">art. 191 ust. 2</span>), <span class="trapw">czerwony</span> = brak.</p>
+  <div class="who" id="who"></div>
+  <p class="whyline" id="why" aria-live="polite">Wybierz organ.</p>
+  <div class="row"><button class="btn" type="button" id="whoReset">Zacznij od nowa</button><span class="score" id="whoCnt"></span></div>
+</section>
+
+<section id="rozp">
+  <h2><span class="n">05</span>Rozporządzenie RM z 31.03.2020 r.</h2>
+  <p>To akt <b>Rady Ministrów</b> (podpisał premier M. Morawiecki), wydany na podstawie art. 46a i 46b ustawy z 5.12.2008 o zapobieganiu oraz zwalczaniu zakażeń i chorób zakaźnych u ludzi. Wprowadził pierwszy lockdown. Wszedł w życie <b>z dniem ogłoszenia</b>.</p>
+  <h3>Najpierw trzy zasady, bez których nie ocenisz tego aktu</h3>
+  <div class="grid2">
+    <div class="box art-b"><span class="lbl">Art. 87 + 92</span><p>Rozporządzenie to źródło prawa <b>niższe od ustawy</b>. Wolno je wydać tylko na podstawie <span class="k">szczegółowego upoważnienia</span> z ustawy i tylko <b>w celu jej wykonania</b>. Nie może iść dalej niż ustawa.</p></div>
+    <div class="box art-b"><span class="lbl">Art. 31 ust. 3</span><p>Wolność można ograniczyć tylko: <b>w ustawie</b>, gdy jest to <b>konieczne</b> (np. dla zdrowia publicznego) i <b>bez naruszania istoty</b> wolności.</p></div>
+    <div class="box art-b"><span class="lbl">Art. 228, 232</span><p>Na klęski, także epidemie, Konstytucja przewiduje <span class="k">stan klęski żywiołowej</span>. Wtedy wolno ograniczać więcej. Rząd go nie wprowadził.</p></div>
+  </div>
+  <div class="box warn-b"><span class="lbl">Klucz do całego zadania</span><p>Ustawa pozwalała na <b>„ograniczenia”</b> (np. określonego sposobu przemieszczania się, określonych zakresów działalności). Rozporządzenie często wprowadzało <b>„zakazy”</b>. <span class="k">Ograniczenie to nie zakaz</span>, więc rozporządzenie wychodziło poza upoważnienie.</p></div>
+
+  <h3>Interaktywne: rozdział po rozdziale</h3>
+  <p>Kropka pokazuje ocenę: <span class="ok">zielona</span> raczej OK, <span style="color:var(--warn);font-weight:700">pomarańczowa</span> wątpliwe, <span class="trapw">czerwona</span> poważny problem.</p>
+  <div class="chips" id="chips"></div>
+  <div class="panel fade" id="panel" aria-live="polite"></div>
+
+  <h3>Interaktywne: test z art. 31 ust. 3 na przykładzie § 5</h3>
+  <p>§ 5 zakazywał od 1 do 11 kwietnia przemieszczania się, poza pracą, niezbędnymi potrzebami, wolontariatem i kultem religijnym. Odpowiadaj po kolei.</p>
+  <div class="test" id="test"></div>
+  <div class="box ok-b"><span class="lbl">Wniosek do całego rozporządzenia</span><p>Wiele przepisów było niezgodnych z <span class="a">art. 31 ust. 3</span> i <span class="a">art. 92</span>: ograniczały wolności aktem niższym niż ustawa i wychodziły poza delegację. Sądy w wielu sprawach uchylały kary nakładane na ich podstawie. Sąd może pominąć wadliwe rozporządzenie w konkretnej sprawie, bo sędzia podlega Konstytucji i ustawom (<span class="a">art. 178 ust. 1</span>). Ogólnie zbadać je może TK (<span class="a">art. 188 pkt 3</span>).</p></div>
+</section>
+
+<section id="art1">
+  <h2><span class="n">06</span>Komentarz M. Chmaja do art. 1</h2>
+  <p class="quote">„Rzeczpospolita Polska jest dobrem wspólnym wszystkich obywateli.” <span class="a">art. 1</span></p>
+  <h3>Skąd się wzięło</h3>
+  <div class="tl">
+    <div class="tli"><span class="y">1791</span><div class="c">Konstytucja 3 Maja: w preambule mowa o „dobru powszechnym”.</div></div>
+    <div class="tli"><span class="y">1935</span><div class="c">Konstytucja kwietniowa, art. 1: państwo jest wspólnym dobrem obywateli. <b>Państwo w centrum</b>, obywatele mają o nie dbać.</div></div>
+    <div class="tli"><span class="y">1997</span><div class="c">Obecna Konstytucja: państwo jest <b>dobrem wspólnym</b> obywateli. <span class="k">Państwo ma służyć ludziom</span>, a nie odwrotnie.</div></div>
+  </div>
+  <div class="box trap-b"><span class="lbl">Częste pytanie</span><p>Czym różni się art. 1 z 1935 i 1997 r.? Słowa podobne, sens odwrotny: w 1935 r. obywatele służą państwu, w 1997 r. państwo służy obywatelom.</p></div>
+
+  <h3>Moc prawna i nazwa państwa</h3>
+  <ul>
+    <li>Art. 1 nie jest „ważniejszy” tylko dlatego, że jest pierwszy. Kolejność nie daje pierwszeństwa.</li>
+    <li>Jest jednak <span class="k">pełną normą prawną</span>: można go stosować samodzielnie i może być <span class="k">wzorcem kontroli</span> w TK.</li>
+    <li>„Rzeczpospolita” to tłumaczenie łacińskiego <i>res publica</i>, czyli rzecz wspólna. Oficjalna nazwa w latach 1919–1952 i znowu od nowelizacji z 29.12.1989 r. Oznacza <span class="k">republikańską formę rządów</span> (prezydent wybierany na kadencję, a nie monarcha).</li>
+  </ul>
+
+  <h3>Interaktywne: państwo według Jellinka</h3>
+  <p>Państwo to trzy elementy. Każdy z nich jest „dobrem wspólnym”.</p>
+  <div class="tabs" id="jtabs"></div>
+  <div class="panel fade" id="jpanel"></div>
+
+  <h3>Granice dobra wspólnego</h3>
+  <ul>
+    <li>Dobro państwa <b>nie oznacza</b> jego absolutnej przewagi nad dobrem jednostki. Ograniczać wolność wolno tylko w granicach <span class="a">art. 31 ust. 3</span>.</li>
+    <li>Potrzebny jest <span class="k">dialog społeczny</span>: decyduje większość, ale z ochroną praw mniejszości <span class="tkw">(TK, K 9/12)</span>.</li>
+    <li>Organy państwa mają <span class="k">współdziałać</span> dla dobra wspólnego <span class="tkw">(TK, Kpt 2/08)</span>.</li>
+    <li>Do dobra wspólnego należy <span class="k">pluralizm polityczny</span> (<span class="a">art. 11</span>). System jednej partii albo zawłaszczenie instytucji przez partię byłyby sprzeczne także z art. 1.</li>
+    <li>Art. 1 łączy się z <span class="a">art. 2</span>: formalnie chodzi o prawo jako fundament państwa, materialnie o wartości: dobro wspólne, demokrację, sprawiedliwość społeczną.</li>
+  </ul>
+  <div class="box tk-b"><span class="lbl">TK, wyrok z 21.09.2015, K 28/13</span><p>Dobro wspólne dotyczy całej wspólnoty ludzi zorganizowanej w państwo. To nie państwo jest wspólnotą obywateli, lecz <b>państwo jako wspólnota obywateli jest dobrem wspólnym</b>.</p></div>
+  <div class="box plain"><span class="lbl">Inne „dobra” w Konstytucji</span><p>Troska o dobro wspólne jako obowiązek obywatela (<span class="a">art. 82</span>), współdziałanie państwa i kościołów dla dobra człowieka i dobra wspólnego (<span class="a">art. 25 ust. 3</span>), dobro publiczne (<span class="a">art. 59 ust. 3</span>), dobro rodziny (<span class="a">art. 71</span>), dobro Ojczyzny w przysiędze Prezydenta (<span class="a">art. 130</span>).</p></div>
+  <div class="box ok-b"><span class="lbl">Połączenie z kazusem</span><p>Według komentarza wspólnoty samorządowe działają w ramach państwa, a <span class="k">decentralizacja</span> (<span class="a">art. 15</span>) wpisuje się w dobro wspólne. Ciągłość działania organów to wartość konstytucyjna, co wzmacnia argument z pytania 5.</p></div>
+</section>
+
+<section id="bazy">
+  <h2><span class="n">07</span>Lex i Legalis</h2>
+  <p>Te dwa pliki to zrzuty ekranu z instrukcją, jak dostać się do baz prawniczych. Uczelnia ma do nich wykupiony dostęp.</p>
+  <div class="grid2">
+    <div class="box plain"><span class="lbl">LEX (Wolters Kluwer)</span><p>Logujesz się kontem uczelnianym, np. przez opcję logowania organizacji. W wyszukiwarce wpisujesz np. „Konstytucja komentarz” i otwierasz komentarz Chmaja. Spis treści jest po artykułach po lewej.</p></div>
+    <div class="box plain"><span class="lbl">Legalis (C.H.Beck)</span><p>Podobna baza innego wydawnictwa. Też ma akty prawne, komentarze i orzecznictwo. Czasem jest tam inny komentarz do tego samego artykułu.</p></div>
+  </div>
+  <div class="box ok-b"><span class="lbl">Jak cytować w kazusie</span><p>M. Chmaj, <i>Konstytucja Rzeczypospolitej Polskiej. Komentarz</i>, WKP 2026, art. 1. Wyroki TK podawaj z datą i sygnaturą, np. wyrok TK z 21.09.2015 r., K 28/13.</p></div>
+</section>
+
+<section id="sprawdzian">
+  <h2><span class="n">08</span>Sprawdzian</h2>
+  <h3>Quiz</h3>
+  <div class="stack" id="quiz"></div>
+  <h3>Fiszki</h3>
+  <p>Stuknij kartę, żeby ją obrócić.</p>
+  <button class="flip" id="flip" type="button" aria-live="polite"><div class="flip-in"><div class="face"><span class="side">Pytanie</span><span class="txt" id="fq"></span></div><div class="face b"><span class="side">Odpowiedź</span><span class="txt" id="fa"></span></div></div></button>
+  <div class="row"><button class="btn" type="button" id="prev">← Poprzednia</button><button class="btn" type="button" id="next">Następna →</button><button class="btn" type="button" id="shuf">Przetasuj</button><span class="score" id="cnt" style="margin-left:auto"></span></div>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* pasek postępu czytania */
+addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);$('#prog').style.width=(p*100)+'%'},{passive:true});
+
+/* plan */
+const pl=[...document.querySelectorAll('#planList input')];
+function meter(){$('#meter').style.width=(pl.filter(c=>c.checked).length/pl.length*100)+'%'}
+pl.forEach(cb=>{if(store.get('plan-'+cb.id)==='1'){cb.checked=true;cb.closest('li').classList.add('done')}
+ cb.addEventListener('change',()=>{cb.closest('li').classList.toggle('done',cb.checked);store.set('plan-'+cb.id,cb.checked?'1':'0');meter()})});
+meter();
+
+/* tryb sprawdzania */
+$('#qm').addEventListener('change',e=>{$('#kazus').classList.toggle('quiz-mode',e.target.checked);document.querySelectorAll('#kazus .ans').forEach(a=>a.classList.remove('open'));document.querySelectorAll('#kazus .reveal').forEach(b=>b.textContent='Pokaż odpowiedź')});
+document.querySelectorAll('#kazus .reveal').forEach(b=>b.addEventListener('click',()=>{const a=b.nextElementSibling;a.classList.toggle('open');b.textContent=a.classList.contains('open')?'Ukryj odpowiedź':'Pokaż odpowiedź'}));
+
+/* drabina */
+const levels=[["Państwo (władza centralna)","wkracza ostatnie"],["Województwo","samorząd regionalny"],["Powiat","samorząd lokalny"],["Gmina","podstawowa jednostka, art. 164"],["Człowiek i rodzina","najbliżej"]];
+const tasks=[["Wychowanie dziecka",4],["Wywóz śmieci, podstawówka",3],["Liceum, szpital powiatowy",2],["Rozwój regionu, drogi wojewódzkie",1],["Obrona kraju, polityka zagraniczna",0]];
+$('#ladder').innerHTML=levels.map((l,i)=>`<div class="rung" data-i="${i}"><b>${l[0]}</b><small>${l[1]}</small></div>`).join('');
+$('#tasks').innerHTML=tasks.map((t,i)=>`<button class="btn" type="button" data-t="${i}">${t[0]}</button>`).join('');
+function pickTask(i){document.querySelectorAll('#tasks .btn').forEach(b=>b.classList.toggle('on',+b.dataset.t===i));document.querySelectorAll('.rung').forEach(r=>r.classList.toggle('hit',+r.dataset.i===tasks[i][1]))}
+document.querySelectorAll('#tasks .btn').forEach(b=>b.onclick=()=>pickTask(+b.dataset.t));pickTask(1);
+
+/* domniemanie */
+const flows={k:[["Zadanie publiczne, którego ustawa nikomu nie przypisała","var(--soft)","var(--ink)"],["Domniemanie: samorząd (art. 163)","var(--ok-bg)","var(--ok)"],["W samorządzie: gmina (art. 164 ust. 3)","var(--ok-bg)","var(--ok)"]],
+ u:[["Zadanie publiczne, którego ustawa nikomu nie przypisała","var(--soft)","var(--ink)"],["Domniemanie: władza centralna","var(--trap-bg)","var(--trap)"],["Gmina dostaje tylko „resztki”, których centrala nie zrobi","var(--trap-bg)","var(--trap)"]]};
+function flow(k){const f=$('#flow');f.innerHTML=flows[k].map((s,i)=>`${i?'<div class="arrow">↓</div>':''}<div class="step"><span class="pill" style="background:${s[1]};color:${s[2]}">${s[0]}</span></div>`).join('')+(k==='u'?'<p class="trapw">Odwrócenie reguły z Konstytucji = niezgodność.</p>':'<p class="ok">Tak jest zgodnie z Konstytucją.</p>');f.classList.remove('fade');void f.offsetWidth;f.classList.add('fade');document.querySelectorAll('[data-flow]').forEach(b=>b.classList.toggle('on',b.dataset.flow===k))}
+document.querySelectorAll('[data-flow]').forEach(b=>b.onclick=()=>flow(b.dataset.flow));flow('k');
+
+/* kto do TK */
+const who=[["Prezydent RP","g","Art. 191 ust. 1 pkt 1. Legitymacja ogólna: może zaskarżyć każdy akt."],["Prezydent miasta","x","Organ wykonawczy gminy. Nie ma go w art. 191. To była sytuacja z kazusu."],["Rada miasta","s","Organ stanowiący JST, art. 191 ust. 1 pkt 3. Tylko sprawy z zakresu jej działania."],["Sejmik województwa","s","Też organ stanowiący JST, legitymacja szczególna."],["Wójt gminy","x","Organ wykonawczy, tak jak prezydent miasta. Brak legitymacji."],["Wojewoda","x","Przedstawiciel rządu w województwie. Nie ma go w art. 191."],["50 posłów","g","Art. 191 ust. 1 pkt 1. Mniej niż 50 nie wystarczy."],["30 senatorów","g","Art. 191 ust. 1 pkt 1."],["Rzecznik Praw Obywatelskich","g","Art. 191 ust. 1 pkt 1."],["Prezes Rady Ministrów","g","Art. 191 ust. 1 pkt 1."],["Prokurator Generalny","g","Art. 191 ust. 1 pkt 1."],["Ogólnokrajowy organ związku zawodowego","s","Art. 191 ust. 1 pkt 4. Tylko sprawy z zakresu działania."],["Kościół lub związek wyznaniowy","s","Art. 191 ust. 1 pkt 5. Tylko sprawy z zakresu działania."],["Zwykły obywatel","x","Nie może złożyć wniosku abstrakcyjnego. Ma za to skargę konstytucyjną (art. 79), gdy naruszono jego prawa w konkretnej sprawie."]];
+const lab={g:"OGÓLNA",s:"SZCZEGÓLNA",x:"BRAK"};
+function renderWho(){$('#who').innerHTML=who.map((w,i)=>`<button type="button" data-w="${i}"><b>${w[0]}</b><span class="res">?</span></button>`).join('');$('#why').textContent='Wybierz organ.';cntWho();
+ document.querySelectorAll('#who button').forEach(b=>b.onclick=()=>{const w=who[+b.dataset.w];b.className=w[1];b.querySelector('.res').textContent=lab[w[1]];$('#why').innerHTML=`<b>${w[0]}:</b> ${w[2]}`;cntWho()})}
+function cntWho(){const n=document.querySelectorAll('#who button.g,#who button.s,#who button.x').length;$('#whoCnt').textContent=`Odkryte: ${n} / ${who.length}`}
+$('#whoReset').onclick=renderWho;renderWho();
+
+/* rozporządzenie */
+const rz=[
+ {t:"Rozdz. 1 · § 1",n:"Obszar epidemii",s:"ok",co:"Stwierdza, że stan epidemii obejmuje całe terytorium Polski.",pr:"Podstawa dla pozostałych przepisów.",prob:"Brak istotnego problemu. To ustalenie, na którym opiera się reszta aktu."},
+ {t:"Rozdz. 2 · § 2–4",n:"Granica i kwarantanna",s:"warn",co:"Wstrzymanie pociągów międzynarodowych. Kto wraca do Polski, podaje Straży Granicznej adres i telefon i odbywa 14 dni kwarantanny razem z domownikami. Wyjątki m.in. dla kierowców, załóg, marynarzy, żołnierzy, rolników z pogranicza. Dane trafiają m.in. do sanepidu, NFZ, ZUS, Policji, wojewodów i Poczty. Zamiast decyzji sanepidu jest oświadczenie składane pracodawcy lub ZUS.",pr:"art. 41 (wolność osobista), art. 52, art. 47 i 51 (prywatność, dane osobowe)",prob:"Szeroki przepływ danych osobowych określony w rozporządzeniu, a art. 51 ust. 5 wymaga, by zasady gromadzenia informacji określała ustawa. Kwarantanna z mocy prawa, bez decyzji, utrudnia jej zaskarżenie."},
+ {t:"Rozdz. 2 · § 5",n:"Zakaz przemieszczania się",s:"trap",co:"Od 1 do 11 kwietnia zakaz przemieszczania się po Polsce. Wyjątki: praca lub zadania służbowe, niezbędne potrzeby życia codziennego (zakupy, lekarz, opieka nad bliskimi), wolontariat przy COVID-19, kult religijny.",pr:"art. 52 ust. 1 i 3, art. 31 ust. 3, art. 92",prob:"Ustawa pozwalała na „ograniczenie określonego sposobu przemieszczania się”, a nie na generalny zakaz. Art. 52 ust. 3 wymaga, by ograniczenia tej wolności były w ustawie. Rozporządzenie wyszło poza delegację."},
+ {t:"Rozdz. 3 · § 6–7",n:"Respiratory i maseczki",s:"ok",co:"Zakaz wywozu za granicę respiratorów i kardiomonitorów. Przy wywozie gogli, kombinezonów, masek, rękawiczek i środków dezynfekcyjnych przedsiębiorca musi powiadomić wojewodę 36 godzin wcześniej.",pr:"art. 22 (działalność gospodarcza), art. 64 (własność)",prob:"Ustawa przewidywała ograniczenia obrotu określonymi przedmiotami, a cel (dostępność sprzętu medycznego) jest silny. Zwykle uznaje się to za łagodniejszą i lepiej umocowaną część aktu. Do dyskusji."},
+ {t:"Rozdz. 4 · § 8–9",n:"Zamknięcie branż i limity",s:"trap",co:"Zamknięte: restauracje (poza na wynos), imprezy i targi, kina, siłownie, baseny, kluby, kasyna, fryzjerzy i kosmetyczki, salony tatuażu, hotele, biblioteki i muzea. W galeriach powyżej 2000 m² działają tylko sklepy z żywnością, lekami, kosmetykami, artykułami budowlanymi itp. W sklepie maks. 3 osoby na kasę, w godz. 10–12 tylko osoby 65+, obowiązkowe rękawiczki. W kościele maks. 5 osób (do 11.04), potem 50. W pracy 1,5 m odstępu.",pr:"art. 22, art. 20, art. 65 (praca), art. 53 (religia), art. 73 (kultura), art. 32 (równość)",prob:"Ustawa mówiła o „czasowym ograniczeniu określonych zakresów działalności”. § 9 sam nazywa to „całkowitym zakazem”. Ograniczenie to nie zakaz. Godziny dla seniorów różnicują ludzi według wieku (art. 32), choć cel ochrony zdrowia może to uzasadniać."},
+ {t:"Rozdz. 4 · § 10–13",n:"Leczenie i urzędy",s:"ok",co:"Wstrzymanie uzdrowisk, części rehabilitacji i dentobusów. Teleporady: tożsamość pacjenta można potwierdzić telefonicznie, skierowanie dostarczyć później. Urzędy mogą ograniczyć obsługę do zadań niezbędnych lub bez bezpośredniego kontaktu.",pr:"art. 68 (ochrona zdrowia)",prob:"Głównie przepisy organizacyjne i ułatwienia. Mniej kontrowersyjne."},
+ {t:"Rozdz. 5 · § 14–15",n:"Zakaz zgromadzeń",s:"trap",co:"Od 1 do 11 kwietnia zakaz zgromadzeń w rozumieniu Prawa o zgromadzeniach oraz innych imprez, spotkań i zebrań, z wyjątkiem spotkań z najbliższymi. Od 12 kwietnia zgromadzenia dozwolone do 50 osób.",pr:"art. 57, art. 31 ust. 3",prob:"Całkowity zakaz korzystania z wolności zgromadzeń trudno pogodzić z zakazem naruszania istoty wolności. Do tego ograniczenie wprowadzono rozporządzeniem."},
+ {t:"Rozdz. 6 · § 16",n:"Udostępnienie nieruchomości",s:"warn",co:"Obowiązek udostępnienia nieruchomości, lokali i terenów do walki z epidemią, jeśli są przewidziane w planie przeciwepidemicznym. Wojewoda informuje właściciela.",pr:"art. 64, art. 21 (własność)",prob:"Ingerencja we własność, ale wynika z planu przewidzianego w ustawie. Do dyskusji."},
+ {t:"Rozdz. 7 · § 17",n:"Parki i plaże",s:"trap",co:"Od 1 do 11 kwietnia zakaz korzystania z parków, zieleńców, promenad, bulwarów, ogrodów botanicznych i zoologicznych, placów zabaw i plaż. Wyjątki: praca, ochrona zdrowia i bezpieczeństwa, wolontariat.",pr:"art. 52, art. 31 ust. 3",prob:"Kolejny zakaz zamiast ograniczenia, bez wyraźnej podstawy w ustawie."},
+ {t:"Rozdz. 8 · § 18",n:"Sposób przemieszczania",s:"trap",co:"Pieszo 2 m odstępu (poza opieką nad dzieckiem do 13 lat lub osobą niepełnosprawną). W komunikacji publicznej tylko połowa miejsc siedzących. Osoby do 18 lat mogą wychodzić tylko z dorosłym. Zakaz rowerów miejskich.",pr:"art. 52, art. 31 ust. 3, art. 48 (prawa rodziców)",prob:"2 m i limit w autobusie mieszczą się bliżej „określonego sposobu przemieszczania”. Ale zakaz samodzielnego wyjścia dla nieletnich i zakaz rowerów miejskich to już zakazy bez podstawy."},
+ {t:"Rozdz. 9 · § 19–20",n:"Przepisy końcowe",s:"warn",co:"Przepisy przejściowe. Rozporządzenie wchodzi w życie z dniem ogłoszenia, czyli bez vacatio legis.",pr:"art. 2 (zasady przyzwoitej legislacji)",prob:"Brak czasu na przygotowanie się do nowych obowiązków. W nagłej sytuacji może to być uzasadnione. Do dyskusji."}];
+const sevTxt={ok:"RACZEJ OK",warn:"WĄTPLIWE",trap:"POWAŻNY PROBLEM"};
+$('#chips').innerHTML=rz.map((r,i)=>`<button class="chip" type="button" data-r="${i}"><span class="dot d-${r.s}"></span>${r.n}</button>`).join('');
+function showR(i){const r=rz[i],p=$('#panel');p.innerHTML=`<span class="eyebrow">${r.t}</span><h3>${r.n}</h3><span class="sev ${r.s}">${sevTxt[r.s]}</span><div class="stack"><p><b>Co mówi:</b> ${r.co}</p><p><b>Jakie prawa:</b> <span class="tkw">${r.pr}</span></p><p><b>Problem:</b> ${r.prob}</p></div>`;p.classList.remove('fade');void p.offsetWidth;p.classList.add('fade');document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',+c.dataset.r===i))}
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>showR(+c.dataset.r));showR(2);
+
+/* test 31 ust 3 */
+const test=[
+ {q:"1. Czy ograniczenie jest w ustawie?",a:[["Tak",false,"Nie. Zakaz jest w rozporządzeniu Rady Ministrów, a nie w ustawie."],["Nie",true,"Dobrze. Zakaz jest w rozporządzeniu. Już tu art. 31 ust. 3 jest naruszony."]]},
+ {q:"2. Czy jest uzasadniony wartością z art. 31 ust. 3?",a:[["Tak, ochroną zdrowia",true,"Dobrze. Ochrona zdrowia publicznego jest na liście. Cel był legalny."],["Nie",false,"Ochrona zdrowia jest wprost wymieniona w art. 31 ust. 3, więc cel był legalny."]]},
+ {q:"3. Czy jest konieczny i proporcjonalny?",a:[["Na pewno tak",false,"Nie da się tego przesądzić. Ogólny zakaz wyjścia z domu to bardzo daleka ingerencja, a łagodniejsze środki (odstęp, limity) też były dostępne."],["Wątpliwe",true,"Dobrze. Ogólny zakaz jest bardzo daleki, a łagodniejsze środki były dostępne. Proporcjonalność jest dyskusyjna."]]},
+ {q:"4. Wynik testu?",a:[["Zgodny z Konstytucją",false,"Nie. Przepada już na kroku 1, bo brakuje formy ustawy. Pozostałe kroki tylko wzmacniają argument."],["Niezgodny",true,"Dobrze. Brak formy ustawowej przesądza sprawę, a wątpliwości co do proporcjonalności to dodatkowy argument."]]}];
+$('#test').innerHTML=test.map((t,i)=>`<div class="tq" data-q="${i}"><b>${t.q}</b><div class="row">${t.a.map((a,j)=>`<button class="btn" type="button" data-a="${j}">${a[0]}</button>`).join('')}</div><p class="fb"></p></div>`).join('');
+document.querySelectorAll('.tq').forEach(el=>el.querySelectorAll('.btn').forEach(b=>b.onclick=()=>{const t=test[+el.dataset.q].a[+b.dataset.a];el.classList.remove('done-ok','done-bad');el.classList.add(t[1]?'done-ok':'done-bad');el.querySelectorAll('.btn').forEach(x=>x.classList.toggle('on',x===b));const fb=el.querySelector('.fb');fb.innerHTML=(t[1]?'<span class="ok">✓ </span>':'<span class="trapw">✗ </span>')+t[2];fb.classList.remove('fade');void fb.offsetWidth;fb.classList.add('fade')}));
+
+/* Jellinek */
+const jel=[["Terytorium","Polska jest <span class=\"k\">państwem unitarnym</span> (<span class=\"a\">art. 3</span>): bez zmiany Konstytucji nie może stać się federacją. Mieszkańcy każdej jednostki tworzą z mocy prawa <span class=\"k\">wspólnotę samorządową</span> (<span class=\"a\">art. 16 ust. 1</span>), a wspólnoty są sobie równe. Wpisuje się to w <span class=\"k\">decentralizację</span> (<span class=\"a\">art. 15</span>). Samorządy działają w ramach państwa i nie mogą być mu przeciwstawiane, np. przez dążenia do secesji. Strażnikiem nienaruszalności terytorium jest Prezydent (<span class=\"a\">art. 126 ust. 2</span>)."],["Ludność","Państwo tworzą ludzie, czyli Naród: wszyscy obywatele. Bez obywateli Rzeczpospolita nie może istnieć. Ich obowiązkiem jest <span class=\"k\">troska o dobro wspólne</span> (<span class=\"a\">art. 82</span>), czyli dbanie o pomyślność państwa jako zbiorowości."],["Władza","Obejmuje władzę ustawodawczą, wykonawczą i sądowniczą (<span class=\"a\">art. 10</span>), inne organy władzy publicznej (<span class=\"a\">art. 7</span>), w tym <span class=\"k\">organy samorządu</span>, a także cały aparat administracji. Wszystkie mają działać dla dobra wspólnego, a nie jednej grupy czy partii. <span class=\"k\">Nieprzerwane i stabilne działanie organów</span> jest wartością konstytucyjną."]];
+$('#jtabs').innerHTML=jel.map((j,i)=>`<button class="btn" type="button" data-j="${i}">${j[0]}</button>`).join('');
+function showJ(i){const p=$('#jpanel');p.innerHTML=`<h3>${jel[i][0]}</h3><p>${jel[i][1]}</p>`;p.classList.remove('fade');void p.offsetWidth;p.classList.add('fade');document.querySelectorAll('[data-j]').forEach(b=>b.classList.toggle('on',+b.dataset.j===i))}
+document.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>showJ(+b.dataset.j));showJ(0);
+
+/* quiz */
+const qz=[
+ ["Gdzie wprost wyrażono zasadę pomocniczości?",["W art. 1","W preambule","W art. 191","W art. 92"],1,"Preambuła mówi o pomocniczości umacniającej uprawnienia obywateli i ich wspólnot."],
+ ["Na czyją rzecz Konstytucja ustanawia domniemanie właściwości?",["Rady Ministrów","Wojewody","Samorządu terytorialnego","Sejmu"],2,"Art. 163, a w samorządzie na rzecz gminy (art. 164 ust. 3)."],
+ ["Prezydent miasta to organ…",["stanowiący gminy","wykonawczy gminy","administracji rządowej","kontroli państwowej"],1,"Dlatego nie ma legitymacji z art. 191 ust. 1 pkt 3."],
+ ["Rada miasta ma przed TK legitymację…",["ogólną","szczególną","żadną","tylko w sprawach podatków"],1,"Art. 191 ust. 2: tylko sprawy objęte jej zakresem działania."],
+ ["Czy TK ocenia, czy ustawa jest politycznie mądra?",["Tak, zawsze","Tak, na wniosek RPO","Nie, ocenia tylko zgodność z Konstytucją","Tylko ustawy budżetowe"],2,"TK nie bada celowości ustaw."],
+ ["Ograniczenie wolności musi być ustanowione…",["w rozporządzeniu","w uchwale rządu","w ustawie","w zarządzeniu wojewody"],2,"Art. 31 ust. 3."],
+ ["Główna wada § 5 rozporządzenia?",["Za krótki termin","Zakaz zamiast ograniczenia, bez podstawy w ustawie","Brak podpisu premiera","Zły tytuł"],1,"Ustawa pozwalała ograniczyć określony sposób przemieszczania się, nie zakazać go."],
+ ["Jaki stan nadzwyczajny pasuje do epidemii?",["Wojenny","Wyjątkowy","Klęski żywiołowej","Żaden"],2,"Art. 232. Nie został wprowadzony."],
+ ["Art. 1 z 1997 r. w porównaniu z 1935 r. podkreśla, że…",["obywatele służą państwu","państwo służy obywatelom","państwo jest federacją","władza należy do Prezydenta"],1,"Państwo jest dobrem wspólnym obywateli."],
+ ["Trzy elementy państwa według Jellinka to…",["Sejm, Senat, Prezydent","terytorium, ludność, władza","gmina, powiat, województwo","prawo, sąd, policja"],1,"Komentarz Chmaja opiera się na tej klasycznej teorii."]];
+let qi=0,qs=0,qa=false;
+function renderQ(){const el=$('#quiz');if(qi>=qz.length){el.innerHTML=`<div class="box ok-b fade"><span class="lbl">Wynik</span><p style="font-family:var(--f-display);font-size:1.4rem;font-weight:800">${qs} / ${qz.length}</p><p>${qs>=8?'Świetnie, jesteś gotowy.':qs>=5?'Nieźle. Powtórz sekcje, w których się pomyliłeś.':'Wróć do kazusu i rozporządzenia, potem spróbuj jeszcze raz.'}</p></div><div class="row"><button class="btn" type="button" id="qAgain">Jeszcze raz</button></div>`;$('#qAgain').onclick=()=>{qi=0;qs=0;renderQ()};return}
+ const q=qz[qi];qa=false;el.innerHTML=`<span class="score">Pytanie ${qi+1} / ${qz.length} · wynik ${qs}</span><p class="qh fade">${q[0]}</p><div class="opts">${q[1].map((o,j)=>`<button class="opt" type="button" data-o="${j}">${o}</button>`).join('')}</div><p class="fb" id="qfb"></p>`;
+ el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{if(qa)return;qa=true;const j=+b.dataset.o;const ok=j===q[2];if(ok)qs++;b.classList.add(ok?'right':'wrong');el.querySelector(`[data-o="${q[2]}"]`).classList.add('right');$('#qfb').innerHTML=(ok?'<span class="ok">✓ Dobrze. </span>':'<span class="trapw">✗ Nie. </span>')+q[3]+` <button class="btn" type="button" id="qNext" style="margin-left:6px">Dalej →</button>`;$('#qNext').onclick=()=>{qi++;renderQ()}})}
+renderQ();
+
+/* fiszki */
+const cards=[["Co to jest zasada pomocniczości?","Zadanie wykonuje szczebel najbliższy obywatelowi; państwo wkracza, gdy niższy szczebel nie daje rady."],["Gdzie Konstytucja wyraża pomocniczość?","Wprost w preambule; rozwijają ją art. 15, 16, 163, 164 ust. 3."],["Domniemanie właściwości: na czyją rzecz?","Samorządu (art. 163), w nim gminy (art. 164 ust. 3)."],["Czy prezydent miasta może iść do TK?","Nie. Organ wykonawczy; art. 191 ust. 1 pkt 3 obejmuje tylko organy stanowiące JST."],["Legitymacja rady miasta?","Szczególna: tylko sprawy z zakresu działania (art. 191 ust. 2)."],["Czy preambuła to samodzielny wzorzec kontroli?","Raczej nie; służy głównie wykładni. Łącz ją z konkretnymi artykułami."],["Skąd „sprawność instytucji”?","Z preambuły: rzetelność i sprawność działania instytucji publicznych."],["Warunki z art. 31 ust. 3?","Ustawa, konieczność w demokratycznym państwie (np. zdrowie), proporcjonalność, nienaruszanie istoty wolności."],["Czego wymaga art. 92?","Rozporządzenie tylko na podstawie szczegółowego upoważnienia ustawy i w celu jej wykonania."],["Ograniczenie a zakaz w rozporządzeniu covidowym?","Ustawa pozwalała ograniczać, rozporządzenie zakazywało, więc wyszło poza delegację."],["Stan nadzwyczajny dla epidemii?","Stan klęski żywiołowej (art. 232)."],["Art. 1: 1935 vs 1997?","1935: obywatele służą państwu. 1997: państwo jest dobrem wspólnym obywateli i im służy."],["Elementy państwa wg Jellinka?","Terytorium, ludność, władza."],["„Rzeczpospolita” znaczy…","Res publica, rzecz wspólna; republikańska forma rządów."],["TK K 28/13 o dobru wspólnym?","Państwo jako wspólnota obywateli jest dobrem wspólnym."]];
+let order=cards.map((_,i)=>i),ci=0;
+function showC(){const c=cards[order[ci]];$('#flip').classList.remove('back');$('#fq').textContent=c[0];$('#fa').textContent=c[1];$('#cnt').textContent=(ci+1)+' / '+cards.length}
+$('#flip').onclick=()=>$('#flip').classList.toggle('back');
+$('#next').onclick=()=>{ci=(ci+1)%cards.length;showC()};
+$('#prev').onclick=()=>{ci=(ci-1+cards.length)%cards.length;showC()};
+$('#shuf').onclick=()=>{for(let j=order.length-1;j>0;j--){const r=Math.floor(Math.random()*(j+1));[order[j],order[r]]=[order[r],order[j]]}ci=0;showC()};
+showC();
+</script>
+</body>
+</html>
